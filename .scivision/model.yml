@@ -1,0 +1,9 @@
+
+name: catdog_classification_model
+url: https://github.com/pwochner/catdog_classification_model
+import: catdog_classification_model
+model: CatDogClassifier
+prediction_fn:
+    call: predict
+    args:
+        X: image
