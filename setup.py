@@ -12,7 +12,7 @@ setup(
     name="catdog_classification_model",
     version="0.0.1",
     description="scivision plugin, using a cat/dog classifier CNN model",
-    url="https://github.com/pwochner/catdog_classification_model",
+    url="TODO: INSERT URL OF THE MODEL GITHUB REPO HERE",
     packages=find_packages(),
     install_requires=requirements,
     python_requires=">=3.7",
