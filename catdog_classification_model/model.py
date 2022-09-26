@@ -5,6 +5,7 @@ from torchvision import transforms
 import numpy as np
 import net
 
+
 CLASS_LABELS = ["cat", "dog"]
 
 
@@ -22,7 +23,7 @@ class CatDogClassifier:
         self.model.load_state_dict(torch.load(filename))
         self.model.eval()
 
-    def predict(self, input):
+    def predict(self, image):
         # transform input image (as required by model)
         transform_input = transforms.Compose(
             [
@@ -32,15 +33,15 @@ class CatDogClassifier:
                 ),
             ]
         )
-        input = input.values
-        input = input[:, :, 0:3]  # make sure we have only 3 channels
-        input = np.transpose(input, (2, 0, 1))
-        input = torch.from_numpy(input).type(torch.float32)
-        input = input.unsqueeze(0)
-        input = transform_input(input)
+        image = image.values
+        image = image[:, :, 0:3]  # make sure we have only 3 channels
+        image = np.transpose(image, (2, 0, 1))
+        image = torch.from_numpy(image).type(torch.float32)
+        image = image.unsqueeze(0)
+        image = transform_input(image)
 
         # make prediction
-        prediction = self.model(input)  # TODO: is it model.predict() for tf?
+        prediction = self.model(image)  # TODO: is it model.predict() for tf?
         prediction = prediction.detach().numpy()
         max_val = np.max(prediction)
         max_ind = np.argmax(prediction)
