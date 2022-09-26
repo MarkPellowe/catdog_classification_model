@@ -32,9 +32,11 @@ class CatDogClassifier:
                 ),
             ]
         )
+        input = input.values
         input = input[:, :, 0:3]  # make sure we have only 3 channels
         input = np.transpose(input, (2, 0, 1))
-        input = (torch.from_numpy(input).type(torch.float32),)
+        input = torch.from_numpy(input).type(torch.float32)
+        input = input.unsqueeze(0)
         input = transform_input(input)
 
         # make prediction
