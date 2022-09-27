@@ -17,14 +17,7 @@ class CatDogClassifier:
         ### The code to load the model weights from file and evaluate the model is
         ### already provided.
         filename = "conv_net_model3.ckpt"
-        if not os.path.exists(filename):
-            model_path = os.path.join(
-                "https://connectionsworkshop.blob.core.windows.net/pets", filename
-            )
-            r = requests.get(model_path)
-            with open(filename, "wb") as outfile:
-                outfile.write(r.content)
-        self.model = net.CatDogClassifier()
+        ### Your code
         self.model.load_state_dict(torch.load(filename))
         self.model.eval()
 
