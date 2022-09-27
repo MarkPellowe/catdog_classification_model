@@ -25,14 +25,7 @@ class CatDogClassifier:
 
     def predict(self, image):
         # transform input image (as required by model)
-        transform_input = transforms.Compose(
-            [
-                transforms.Resize((256, 256)),
-                transforms.Normalize(
-                    mean=[82.18, 139.30, 140.27], std=[49.40, 35.24, 37.86],
-                ),
-            ]
-        )
+        transform_input = transforms.Compose([transforms.Resize((256, 256)),])
         image = image.values
         image = image[:, :, 0:3]  # make sure we have only 3 channels
         image = image / 255  # min/max normalisation
