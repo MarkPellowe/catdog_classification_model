@@ -35,6 +35,7 @@ class CatDogClassifier:
         )
         image = image.values
         image = image[:, :, 0:3]  # make sure we have only 3 channels
+        image = image / 255  # min/max normalisation
         image = np.transpose(image, (2, 0, 1))
         image = torch.from_numpy(image).type(torch.float32)
         image = image.unsqueeze(0)
