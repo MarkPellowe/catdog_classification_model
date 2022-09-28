@@ -4,6 +4,8 @@ import torch
 from torchvision import transforms
 import numpy as np
 import net
+import urllib.request 
+import torchvision
 
 CLASS_LABELS = ["cat", "dog"]
 
@@ -17,11 +19,16 @@ class CatDogClassifier:
         ### The code to load the model weights from file and evaluate the model is
         ### already provided.
         filename = "conv_net_model3.ckpt"
-        ### Your code
+        if not os.path.exists(filename):
+            file = "https://connectionsworkshop.blob.core.windows.net/pets/conv_net_model3.ckpt"
+            urllib.request.urlretrieve(file, filename)
+        
+        self.model = net.CatDogClassifier()
         self.model.load_state_dict(torch.load(filename))
         self.model.eval()
 
-    def predict(self, image):
+
+    def predict(self, image, return_props=False):
         # pre-process input image (as required by model)
         transform_input = transforms.Compose([transforms.Resize((256, 256)),])
         image = image.values
@@ -37,8 +44,13 @@ class CatDogClassifier:
         ### Apply the model to the input image.
         ### Find the class with a higher output, and, using the list of
         ### CLASS_LABELS, get the corresponding class name.
+        class_probs = self.model(image)
+        if not return_probs:
+            return(torch.argmax(class_probs)
+        else:
+            return(class_probs)
         ### Bonus: If you also want the predicted probability for each class,
         ### convert the logits into a probability.
 
-        return "FIX ME"
 
+CatDogClassifier()
