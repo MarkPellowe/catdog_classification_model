@@ -10,7 +10,7 @@ import torchvision
 CLASS_LABELS = ["cat", "dog"]
 
 
-class CatDogClassifier:
+class catdog_classification_model:
     def __init__(self):
         ### TODO ###
         ### Download the file containing the weights of the pre-trained model from url
