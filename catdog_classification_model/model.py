@@ -53,4 +53,4 @@ class catdog_classification_model:
         ### convert the logits into a probability.
 
 
-CatDogClassifier()
+ catdog_classification_model()
