@@ -1,5 +1,5 @@
 
-name: catdogclassifier
+name: catdog_classification_model
 url: https://github.com/st-vincent1/catdog_classification_model
 import: catdog_classification_model
 model: CatDogClassifier
